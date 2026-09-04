@@ -1,0 +1,1 @@
+-- Dados de demonstração devem usar usuários locais do Supabase Auth. Nenhum usuário de produção é inserido aqui.
