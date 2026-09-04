@@ -8,7 +8,7 @@ import {
   Shield,
   UserRound,
   X,
-} from 'lucide-react'
+} from '@/components/ui/icons'
 import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { Logo } from '@/components/shared/logo'
@@ -47,8 +47,8 @@ export function AppShell() {
               cn(
                 'flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium transition',
                 isActive
-                  ? 'bg-brand/15 text-brand-bright'
-                  : 'text-slate-400 hover:bg-white/[.04] hover:text-white',
+                  ? 'bg-sidebar-accent text-sidebar-primary'
+                  : 'text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
               )
             }
           >
@@ -57,24 +57,24 @@ export function AppShell() {
           </NavLink>
         ))}
       </nav>
-      <div className="border-line space-y-1 border-t p-3">
+      <div className="border-sidebar-border space-y-1 border-t p-3">
         <NavLink
           to="/account"
-          className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm text-slate-400 hover:text-white"
+          className="text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm"
         >
           <UserRound size={19} />
           Conta
         </NavLink>
         <NavLink
           to="/settings"
-          className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm text-slate-400 hover:text-white"
+          className="text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm"
         >
           <Settings size={19} />
           Configurações
         </NavLink>
         <NavLink
           to="/admin"
-          className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm text-slate-500 hover:text-white"
+          className="text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm"
         >
           <Shield size={19} />
           Administração
@@ -84,22 +84,22 @@ export function AppShell() {
   )
   return (
     <div className="min-h-screen">
-      <aside className="border-line fixed inset-y-0 left-0 z-40 hidden w-64 border-r bg-[#0b0f17]/95 backdrop-blur-xl md:flex md:flex-col">
+      <aside className="border-sidebar-border bg-sidebar text-sidebar-foreground fixed inset-y-0 left-0 z-40 hidden w-64 border-r md:flex md:flex-col">
         {sidebar}
       </aside>
       {open && (
         <div className="fixed inset-0 z-50 md:hidden">
           <button
-            className="absolute inset-0 bg-black/70"
+            className="bg-foreground/20 absolute inset-0"
             onClick={() => setOpen(false)}
             aria-label="Fechar menu"
           />
-          <aside className="border-line relative flex h-full w-[min(84vw,19rem)] flex-col border-r bg-[#0b0f17]">
+          <aside className="border-sidebar-border bg-sidebar text-sidebar-foreground relative flex h-full w-[min(84vw,19rem)] flex-col border-r shadow-xl">
             {sidebar}
           </aside>
         </div>
       )}
-      <header className="border-line bg-canvas/80 sticky top-0 z-30 flex h-16 items-center justify-between border-b px-4 backdrop-blur-xl md:ml-64 md:px-8">
+      <header className="border-border bg-background/90 sticky top-0 z-30 flex h-16 items-center justify-between border-b px-4 backdrop-blur-md md:ml-64 md:px-8">
         <Button
           variant="ghost"
           size="icon"
@@ -109,10 +109,10 @@ export function AppShell() {
         >
           <Menu size={21} />
         </Button>
-        <div className="hidden text-sm text-slate-500 md:block">
+        <div className="text-muted-foreground hidden text-sm md:block">
           Seu espaço de criação
         </div>
-        <div className="border-brand/30 bg-brand/10 text-brand-bright grid size-9 place-items-center rounded-full border text-sm font-semibold">
+        <div className="border-primary/20 bg-primary/10 text-primary grid size-9 place-items-center rounded-full border text-sm font-semibold">
           J
         </div>
       </header>

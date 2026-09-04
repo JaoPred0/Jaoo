@@ -1,13 +1,13 @@
-import { ShieldCheck } from 'lucide-react'
+import { ShieldCheck } from '@/components/ui/icons'
 export default function AdminPage() {
   return (
     <div className="mx-auto max-w-6xl p-5 sm:p-8">
       <div className="flex items-center gap-3">
-        <span className="rounded-xl bg-amber-400/10 p-3 text-amber-300">
+        <span className="bg-primary/10 text-primary rounded-lg p-3">
           <ShieldCheck />
         </span>
         <div>
-          <p className="text-sm text-amber-300">Acesso restrito</p>
+          <p className="text-primary text-sm">Acesso restrito</p>
           <h1 className="text-3xl font-bold">Administração</h1>
         </div>
       </div>
@@ -15,10 +15,10 @@ export default function AdminPage() {
         {['Usuários', 'Eventos de segurança', 'Auditoria'].map((x) => (
           <section
             key={x}
-            className="border-line bg-panel/60 rounded-2xl border p-5"
+            className="border-border bg-card text-card-foreground rounded-xl border p-5 shadow-sm"
           >
             <p className="font-medium">{x}</p>
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="text-muted-foreground mt-2 text-sm">
               Disponível para administradores com MFA verificado.
             </p>
           </section>

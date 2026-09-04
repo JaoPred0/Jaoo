@@ -17,7 +17,7 @@ const JaooLink = lazy(() => import('@/features/jaoo-link/link-page'))
 const Simple = lazy(() => import('@/features/shared/simple-page'))
 const Admin = lazy(() => import('@/features/admin/admin-page'))
 const loading = (
-  <div className="grid min-h-screen place-items-center text-slate-500">
+  <div className="text-muted-foreground grid min-h-screen place-items-center">
     Carregando…
   </div>
 )

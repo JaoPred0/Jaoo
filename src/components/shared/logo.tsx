@@ -6,12 +6,12 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       className="inline-flex items-center gap-2.5"
       aria-label="Jaoo — início"
     >
-      <span className="bg-brand shadow-brand/20 grid size-9 place-items-center rounded-xl text-lg font-black text-white shadow-lg">
+      <span className="bg-primary text-primary-foreground shadow-primary/15 grid size-9 place-items-center rounded-lg text-lg font-black shadow-sm">
         J
       </span>
       {!compact && (
         <span className="text-xl font-bold tracking-tight">
-          jaoo<span className="text-brand-bright">.</span>
+          jaoo<span className="text-primary">.</span>
         </span>
       )}
     </Link>

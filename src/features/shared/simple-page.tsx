@@ -1,4 +1,4 @@
-import { CreditCard, Settings, UserRound } from 'lucide-react'
+import { CreditCard, Settings, UserRound } from '@/components/ui/icons'
 const content = {
   account: {
     title: 'Sua conta',
@@ -21,14 +21,14 @@ export default function SimplePage({ kind }: { kind: keyof typeof content }) {
     Icon = item.icon
   return (
     <div className="mx-auto max-w-5xl p-5 sm:p-8">
-      <span className="bg-brand/10 text-brand-bright inline-grid rounded-xl p-3">
+      <span className="bg-primary/10 text-primary inline-grid rounded-lg p-3">
         <Icon />
       </span>
       <h1 className="mt-5 text-3xl font-bold">{item.title}</h1>
-      <p className="mt-2 text-slate-500">{item.description}</p>
-      <section className="border-line bg-panel/60 mt-8 rounded-2xl border p-6">
+      <p className="text-muted-foreground mt-2">{item.description}</p>
+      <section className="border-border bg-card text-card-foreground mt-8 rounded-xl border p-6 shadow-sm">
         <p className="font-medium">Fundação preparada</p>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+        <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-6">
           Este espaço já segue a arquitetura modular da plataforma e será
           ampliado conforme os próximos recursos forem implementados.
         </p>

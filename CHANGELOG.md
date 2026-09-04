@@ -2,6 +2,20 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## [0.1.2] - 2026-09-04
+
+### Alterado
+
+- Preset oficial shadcn/ui Mira com base Neutral, tema Violet e radius médio.
+- DM Sans e Hugeicons adotados como padrões da interface.
+- Tema claro definido como experiência inicial da plataforma.
+- Componentes e páginas migrados para os tokens semânticos do design system.
+
+### Adicionado
+
+- Itens “Início” e “Aplicativos” na navegação pública.
+- Seção de aplicativos Web, PWA, desktop e mobile.
+
 ## [0.1.1] - 2026-09-04
 
 ### Alterado
@@ -30,5 +44,6 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.1.2]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.2
 [0.1.1]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.1
 [0.1.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.0

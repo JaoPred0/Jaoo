@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowLeft, LoaderCircle } from 'lucide-react'
+import { ArrowLeft, LoaderCircle } from '@/components/ui/icons'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -83,7 +83,7 @@ export default function AuthPage({
           <Logo />
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-white"
+            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm"
           >
             <ArrowLeft size={16} />
             Início
@@ -93,7 +93,7 @@ export default function AuthPage({
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
             {title}
           </h1>
-          <p className="mt-3 text-slate-500">
+          <p className="text-muted-foreground mt-3">
             {mode === 'forgot'
               ? 'Informe seu e-mail e enviaremos um link seguro.'
               : mode === 'register'
@@ -148,7 +148,7 @@ export default function AuthPage({
               <div className="text-right">
                 <Link
                   to="/forgot-password"
-                  className="text-brand-bright text-sm hover:underline"
+                  className="text-primary text-sm hover:underline"
                 >
                   Esqueci minha senha
                 </Link>
@@ -157,7 +157,7 @@ export default function AuthPage({
             {error && (
               <p
                 role="alert"
-                className="rounded-xl border border-red-500/20 bg-red-500/10 p-3 text-sm text-red-300"
+                className="border-destructive/20 bg-destructive/10 text-destructive rounded-lg border p-3 text-sm"
               >
                 {error}
               </p>
@@ -165,7 +165,7 @@ export default function AuthPage({
             {message && (
               <p
                 role="status"
-                className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-3 text-sm text-emerald-300"
+                className="border-primary/20 bg-primary/10 text-primary rounded-lg border p-3 text-sm"
               >
                 {message}
               </p>
@@ -182,34 +182,37 @@ export default function AuthPage({
               )}
             </Button>
           </form>
-          <p className="mt-7 text-center text-sm text-slate-500">
+          <p className="text-muted-foreground mt-7 text-center text-sm">
             {mode === 'login' ? (
               <>
                 Ainda não tem uma conta?{' '}
-                <Link className="text-white hover:underline" to="/register">
+                <Link
+                  className="text-foreground hover:underline"
+                  to="/register"
+                >
                   Criar conta
                 </Link>
               </>
             ) : mode === 'register' ? (
               <>
                 Já tem uma conta?{' '}
-                <Link className="text-white hover:underline" to="/login">
+                <Link className="text-foreground hover:underline" to="/login">
                   Entrar
                 </Link>
               </>
             ) : (
-              <Link className="text-white hover:underline" to="/login">
+              <Link className="text-foreground hover:underline" to="/login">
                 Voltar para entrar
               </Link>
             )}
           </p>
         </main>
       </div>
-      <aside className="border-line bg-panel relative hidden overflow-hidden border-l lg:grid lg:place-items-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(139,112,255,.22),transparent_45%)]" />
+      <aside className="border-border bg-muted/50 relative hidden overflow-hidden border-l lg:grid lg:place-items-center">
+        <div className="bg-primary/5 absolute inset-0" />
         <blockquote className="relative max-w-lg px-12 text-3xl leading-tight font-medium tracking-tight">
           “Uma boa ideia merece um lugar simples para ganhar vida.”
-          <footer className="mt-6 text-sm font-normal text-slate-500">
+          <footer className="text-muted-foreground mt-6 text-sm font-normal">
             Jaoo · Crie, publique, evolua.
           </footer>
         </blockquote>
@@ -228,12 +231,12 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-slate-300">
+      <span className="text-foreground mb-2 block text-sm font-medium">
         {label}
       </span>
       {children}
       {error && (
-        <span className="mt-1.5 block text-sm text-red-400">{error}</span>
+        <span className="text-destructive mt-1.5 block text-sm">{error}</span>
       )}
     </label>
   )

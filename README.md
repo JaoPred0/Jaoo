@@ -8,7 +8,7 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 🚧 Em desenvolvimento
 
-Versão atual: `v0.1.1`
+Versão atual: `v0.1.2`
 
 Esta versão estabelece a fundação técnica e visual do produto. As interfaces iniciais representam a estrutura dos módulos; os fluxos completos de edição e publicação serão implementados gradualmente.
 
@@ -57,7 +57,8 @@ A Jaoo foi projetada para começar pequena e crescer de forma segura. A aplicaç
 
 - React 19 e TypeScript.
 - Vite e Tailwind CSS.
-- Componentes no padrão shadcn/ui e Lucide React.
+- shadcn/ui com o preset oficial Mira, tema Violet/Neutral e radius médio.
+- DM Sans e Hugeicons como fonte e biblioteca de ícones oficiais.
 - Motion, React Router, Zustand e TanStack Query.
 - React Hook Form e Zod.
 
@@ -188,7 +189,7 @@ A migration inicial cria perfis, projetos, planos, assinaturas, limites de uso, 
 
 ## Versão atual
 
-`v0.1.1` — Configuração atualizada para a chave publicável do Supabase.
+`v0.1.2` — Design system oficial claro e navegação pública.
 
 As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 

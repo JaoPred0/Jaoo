@@ -1,4 +1,4 @@
-import { ArrowLeft, ExternalLink, Save } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Save } from '@/components/ui/icons'
 import { Link, useParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -8,7 +8,7 @@ export default function ProjectDetailPage() {
     <div className="mx-auto max-w-5xl p-5 sm:p-8">
       <Link
         to="/projects"
-        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-white"
+        className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm"
       >
         <ArrowLeft size={16} />
         Projetos
@@ -16,7 +16,7 @@ export default function ProjectDetailPage() {
       <div className="mt-5 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-3xl font-bold">Minha página</h1>
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="text-muted-foreground mt-2 text-sm">
             Projeto {id} · salvo agora
           </p>
         </div>
@@ -31,15 +31,17 @@ export default function ProjectDetailPage() {
           </Button>
         </div>
       </div>
-      <section className="border-line bg-panel/60 mt-8 rounded-2xl border p-5 sm:p-7">
+      <section className="border-border bg-card text-card-foreground mt-8 rounded-xl border p-5 shadow-sm sm:p-7">
         <h2 className="text-lg font-semibold">Informações</h2>
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           <label>
-            <span className="mb-2 block text-sm text-slate-400">Nome</span>
+            <span className="text-muted-foreground mb-2 block text-sm">
+              Nome
+            </span>
             <Input defaultValue="Minha página" maxLength={80} />
           </label>
           <label>
-            <span className="mb-2 block text-sm text-slate-400">
+            <span className="text-muted-foreground mb-2 block text-sm">
               Endereço público
             </span>
             <Input defaultValue="minha-pagina" maxLength={80} />

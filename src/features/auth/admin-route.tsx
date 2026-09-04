@@ -12,6 +12,8 @@ export function AdminRoute() {
     staleTime: 60_000,
   })
   if (query.isLoading)
-    return <div className="p-8 text-slate-400">Verificando autorização…</div>
+    return (
+      <div className="text-muted-foreground p-8">Verificando autorização…</div>
+    )
   return query.data ? <Outlet /> : <Navigate to="/dashboard" replace />
 }

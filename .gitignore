@@ -17,6 +17,7 @@ dist-ssr
 *.pem
 *.key
 .supabase/
+supabase/.temp/
 playwright-report/
 test-results/
 src-tauri/target/
