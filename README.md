@@ -8,7 +8,7 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 🚧 Em desenvolvimento
 
-Versão atual: `v0.1.0`
+Versão atual: `v0.1.1`
 
 Esta versão estabelece a fundação técnica e visual do produto. As interfaces iniciais representam a estrutura dos módulos; os fluxos completos de edição e publicação serão implementados gradualmente.
 
@@ -139,7 +139,7 @@ Preencha o arquivo `.env.local` apenas com valores do seu ambiente:
 
 ```env
 VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
+VITE_SUPABASE_PUBLISHABLE_KEY=
 VITE_APP_ENV=development
 VITE_TURNSTILE_SITE_KEY=
 ```
@@ -188,7 +188,7 @@ A migration inicial cria perfis, projetos, planos, assinaturas, limites de uso, 
 
 ## Versão atual
 
-`v0.1.0` — Fundação da Jaoo.
+`v0.1.1` — Configuração atualizada para a chave publicável do Supabase.
 
 As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 

@@ -2,6 +2,13 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## [0.1.1] - 2026-09-04
+
+### Alterado
+
+- Configuração do frontend atualizada para o padrão de chave publicável do Supabase.
+- Documentação de ambiente alinhada ao nome `VITE_SUPABASE_PUBLISHABLE_KEY`.
+
 ## [0.1.0] - 2026-09-04
 
 ### Adicionado
@@ -23,4 +30,5 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.1.1]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.1
 [0.1.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.0
