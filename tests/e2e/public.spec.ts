@@ -23,6 +23,20 @@ test('navegação e pesquisa funcionam com conteúdo vazio', async ({ page }) =>
   expect(errors).toEqual([])
 })
 
+test('registra acessos reais aos aplicativos e preserva o histórico', async ({
+  page,
+}) => {
+  await page.goto('/')
+  await expect(page.getByText('Nenhuma atividade por enquanto')).toBeVisible()
+  await page.getByRole('button', { name: 'Jaoo Link', exact: true }).click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await expect(page.getByRole('dialog').getByText('Em breve')).toBeVisible()
+  await page.getByRole('button', { name: 'Fechar', exact: true }).click()
+  await expect(page.getByText('Consultou o aplicativo')).toBeVisible()
+  await page.reload()
+  await expect(page.getByText('Consultou o aplicativo')).toBeVisible()
+})
+
 test('alterna os dois anúncios sem ultrapassar a tela', async ({ page }) => {
   await page.goto('/')
   const carousel = page.getByRole('region', { name: 'Anúncios' })

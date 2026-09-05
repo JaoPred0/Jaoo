@@ -14,6 +14,10 @@ As páginas anteriores foram removidas para reconstrução. A interface atual po
 
 ## Sobre o projeto
 
+A home também apresenta a seção “Explore a Jaoo”, com destaques dos aplicativos, e dicas expansíveis para preparar novos projetos.
+
+Abaixo dos anúncios, o início oferece seis atalhos de aplicativos e atividade recente. Os apps exibem uma apresentação com status “Em breve”; os editores ainda não estão disponíveis. O histórico registra somente consultas reais aos aplicativos, limitado aos seis últimos acessos, salvo neste navegador (sem sincronização de conta).
+
 A página inicial contém dois anúncios de exemplo em um carrossel responsivo. O conteúdo das campanhas está em `src/components/shared/ads-carousel.tsx`; a navegação funciona por deslize, indicadores ou setas do teclado, sem troca automática.
 
 A Jaoo foi projetada para começar pequena e crescer de forma segura. A aplicação separa autenticação, projetos, conta, administração e produtos em módulos independentes, com validações importantes executadas no banco ou backend.

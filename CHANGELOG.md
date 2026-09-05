@@ -6,6 +6,11 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 
 ### Adicionado
 
+- Seção Explore a Jaoo com destaques de aplicativos e dicas expansíveis para novos projetos.
+
+- Grade responsiva de seis atalhos de aplicativos abaixo dos anúncios, com três colunas no celular.
+- Apresentação dos aplicativos em construção e histórico local dos últimos acessos reais, com estado vazio.
+
 - Carrossel responsivo com dois anúncios de exemplo no início, deslize nativo, indicadores e navegação por teclado.
 
 - Navbar fixa com perfil, pesquisa de páginas e notificações.
