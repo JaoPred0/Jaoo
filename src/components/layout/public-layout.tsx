@@ -11,8 +11,8 @@ const navigation = [
 
 export function PublicLayout() {
   return (
-    <div className="min-h-screen pb-20 sm:pb-0">
-      <header className="border-border bg-background/90 sticky top-0 z-30 border-b backdrop-blur-md">
+    <div className="min-h-screen pt-16 pb-20 sm:pt-20 sm:pb-0">
+      <header className="border-border bg-background/95 fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md">
         <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto] items-center px-5 sm:h-20 sm:grid-cols-[1fr_auto_1fr] lg:px-8">
           <Logo />
           <nav

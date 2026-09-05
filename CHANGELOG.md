@@ -2,6 +2,13 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## [0.1.4] - 2026-09-05
+
+### Corrigido
+
+- Cabeçalho público mantido fixo no topo durante a rolagem.
+- Navegação mobile mantida fixa no rodapé sem sobrepor o conteúdo.
+
 ## [0.1.3] - 2026-09-05
 
 ### Adicionado
@@ -56,6 +63,7 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.1.4]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.4
 [0.1.3]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.3
 [0.1.2]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.2
 [0.1.1]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.1
