@@ -59,12 +59,28 @@ test('registra acessos reais aos aplicativos e preserva o histórico', async ({
   await page.goto('/')
   await expect(page.getByText('Nenhuma atividade por enquanto')).toBeVisible()
   await page.getByRole('button', { name: 'Jaoo Link', exact: true }).click()
-  await expect(page.getByRole('dialog')).toBeVisible()
-  await expect(page.getByRole('dialog').getByText('Em breve')).toBeVisible()
-  await page.getByRole('button', { name: 'Fechar', exact: true }).click()
+  await expect(page).toHaveURL('/link')
+  await page.goto('/')
   await expect(page.getByText('Consultou o aplicativo')).toBeVisible()
   await page.reload()
   await expect(page.getByText('Consultou o aplicativo')).toBeVisible()
+})
+
+test('edita e salva uma página no Jaoo Link', async ({ page }) => {
+  await page.goto('/link')
+  await expect(page.getByRole('heading', { name: 'Jaoo Link' })).toBeVisible()
+  await page.getByLabel('Nome').fill('João')
+  await page.getByLabel('Título do link 1').fill('Meu site')
+  await page.getByLabel('URL do link 1').fill('jaoo.com.br')
+  await page.getByRole('button', { name: 'Salvar' }).click()
+  await expect(
+    page.getByText('Alterações salvas neste dispositivo.'),
+  ).toBeVisible()
+  await page.reload()
+  await expect(page.getByLabel('Nome')).toHaveValue('João')
+  await expect(page.getByLabel('URL do link 1')).toHaveValue(
+    'https://jaoo.com.br/',
+  )
 })
 
 test('alterna os dois anúncios sem ultrapassar a tela', async ({ page }) => {

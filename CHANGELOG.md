@@ -2,9 +2,12 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
-## Não lançado
+## [0.3.0] - 2026-09-05
 
 ### Adicionado
+
+- Editor funcional do Jaoo Link com perfil, bio, endereço, cor, até 12 links e prévia ao vivo.
+- Salvamento local seguro e validação dos dados do Jaoo Link.
 
 - Páginas independentes de login e cadastro com e-mail, senha e Google.
 - Redirecionamento do ícone de perfil para login quando não houver sessão e para o perfil quando a conta estiver conectada.
@@ -119,6 +122,7 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.3.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.3.0
 [0.2.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.2.0
 [0.1.5]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.5
 [0.1.4]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.4

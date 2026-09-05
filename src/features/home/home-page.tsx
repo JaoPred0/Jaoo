@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion } from 'motion/react'
+import { useNavigate } from 'react-router-dom'
 import { AnimatedSection } from '@/components/shared/animated-section'
 import { AdsCarousel } from '@/components/shared/ads-carousel'
 import {
@@ -80,13 +81,12 @@ function readHistory(): Activity[] {
 }
 
 export function HomePage() {
+  const navigate = useNavigate()
   const [history, setHistory] = useState(readHistory)
   const [selected, setSelected] = useState<(typeof apps)[number] | null>(null)
   const dialog = useRef<HTMLDialogElement>(null)
 
   function openApp(app: (typeof apps)[number]) {
-    setSelected(app)
-    dialog.current?.showModal()
     const next = [
       { appId: app.id, at: new Date().toISOString() },
       ...history.filter((item) => item.appId !== app.id),
@@ -97,6 +97,12 @@ export function HomePage() {
     } catch {
       /* O histórico continua disponível nesta sessão. */
     }
+    if (app.id === 'link') {
+      navigate('/link')
+      return
+    }
+    setSelected(app)
+    dialog.current?.showModal()
   }
 
   return (

@@ -8,6 +8,7 @@ import {
   ArrowUpRight01Icon,
   Cancel01Icon,
   CreditCardIcon,
+  Delete02Icon,
   File01Icon,
   FloppyDiskIcon,
   Folder01Icon,
@@ -41,6 +42,7 @@ export const Google = makeIcon(GoogleIcon)
 export const FolderKanban = makeIcon(Folder01Icon)
 export const Link2 = makeIcon(Link01Icon)
 export const CreditCard = makeIcon(CreditCardIcon)
+export const Trash = makeIcon(Delete02Icon)
 export const Settings = makeIcon(Settings01Icon)
 export const UserRound = makeIcon(UserIcon)
 export const Shield = makeIcon(Shield01Icon)

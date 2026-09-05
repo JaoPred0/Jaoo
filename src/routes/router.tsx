@@ -4,6 +4,7 @@ import { HomePage } from '@/features/home/home-page'
 import { ProfilePage } from '@/features/profile/profile-page'
 import { AuthProvider } from '@/features/auth/auth-provider'
 import { AuthPage } from '@/features/auth/auth-page'
+import { JaooLinkPage } from '@/features/jaoo-link/link-page'
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       { path: '/', element: <HomePage /> },
+      { path: '/link', element: <JaooLinkPage /> },
       { path: '*', element: null },
     ],
   },

@@ -8,11 +8,13 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 🚧 Em desenvolvimento
 
-Versão atual: `v0.2.0`
+Versão atual: `v0.3.0`
 
 As páginas anteriores foram removidas para reconstrução. A interface atual possui navbar fixa com perfil, pesquisa de páginas e notificações, além de navegação inferior mobile com Início e Aplicativos. As barras usam efeito de vidro no tema escuro e respeitam a área segura do celular. O conteúdo das páginas permanece vazio. A lista de módulos abaixo descreve a fundação anterior; suas telas não estão mais disponíveis.
 
 ## Sobre o projeto
+
+O Jaoo Link está disponível em `/link`, acessível pelo atalho da home. O editor permite configurar nome, endereço público, bio, cor e até 12 links, com visibilidade individual e prévia responsiva em tempo real. Nesta primeira versão, os dados são salvos somente no navegador do dispositivo.
 
 A página `/perfil` pode ser acessada pelo ícone da navbar. Ela abre sem navbar e sem navegação inferior, apresenta uma boas-vindas e, para visitantes, botões de entrada e cadastro via Google. Para contas conectadas, permite editar nome e usuário no Supabase. Para o OAuth, permita também a URL `/perfil` do domínio local e de produção nas Redirect URLs do Supabase. A gravação depende do schema e das políticas de perfis já aplicados no banco.
 
@@ -209,7 +211,7 @@ A migration inicial cria perfis, projetos, planos, assinaturas, limites de uso, 
 
 ## Versão atual
 
-`v0.2.0` — Última release. Após essa versão, as páginas e layouts foram removidos para reconstrução; a infraestrutura permanece preservada.
+`v0.3.0` — Novo início da interface e primeira versão funcional do Jaoo Link.
 
 As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 
