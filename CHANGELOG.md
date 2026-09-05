@@ -4,6 +4,11 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 
 ## Não lançado
 
+### Adicionado
+
+- Navbar fixa com perfil, pesquisa de páginas e notificações.
+- Navegação inferior mobile com Início e Aplicativos, efeito glassmorphism e área segura.
+
 ### Alterado
 
 - Tema escuro definido como padrão desde o HTML inicial, com cores escuras também no navegador e na abertura do PWA.

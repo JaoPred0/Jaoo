@@ -10,7 +10,7 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 Versão atual: `v0.2.0`
 
-As páginas e layouts anteriores foram removidos para reconstrução. O site abre em branco, mantendo a estrutura técnica, configurações e backend. A lista de módulos abaixo descreve a fundação anterior; suas telas não estão mais disponíveis.
+As páginas anteriores foram removidas para reconstrução. A interface atual possui navbar fixa com perfil, pesquisa de páginas e notificações, além de navegação inferior mobile com Início e Aplicativos. As barras usam efeito de vidro no tema escuro e respeitam a área segura do celular. O conteúdo das páginas permanece vazio. A lista de módulos abaixo descreve a fundação anterior; suas telas não estão mais disponíveis.
 
 ## Sobre o projeto
 

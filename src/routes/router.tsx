@@ -1,4 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
+import { SiteLayout } from '@/components/layout/site-layout'
 
-// Base vazia para reconstruir as páginas do site.
-export const router = createBrowserRouter([{ path: '*', element: null }])
+// As páginas permanecem vazias enquanto o conteúdo é reconstruído.
+export const router = createBrowserRouter([
+  { element: <SiteLayout />, children: [{ path: '*', element: null }] },
+])
