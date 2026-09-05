@@ -10,13 +10,13 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 Versão atual: `v0.2.0`
 
-Esta versão estabelece a fundação técnica e visual do produto. As interfaces iniciais representam a estrutura dos módulos; os fluxos completos de edição e publicação serão implementados gradualmente.
+As páginas e layouts anteriores foram removidos para reconstrução. O site abre em branco, mantendo a estrutura técnica, configurações e backend. A lista de módulos abaixo descreve a fundação anterior; suas telas não estão mais disponíveis.
 
 ## Sobre o projeto
 
 A Jaoo foi projetada para começar pequena e crescer de forma segura. A aplicação separa autenticação, projetos, conta, administração e produtos em módulos independentes, com validações importantes executadas no banco ou backend.
 
-## Funcionalidades atuais
+## Funcionalidades da versão anterior (interfaces removidas)
 
 - Site institucional responsivo.
 - Cadastro, login e recuperação de senha com Supabase Auth, incluindo acesso com Google.
@@ -147,9 +147,11 @@ VITE_TURNSTILE_SITE_KEY=
 
 Use exclusivamente a chave anônima pública no frontend. A chave `SUPABASE_SERVICE_ROLE_KEY` nunca deve receber o prefixo `VITE_` nem ser adicionada ao repositório.
 
-Sem as variáveis do Supabase, as áreas privadas são liberadas somente como demonstração visual local; operações persistentes não são simuladas.
+O site vazio não utiliza autenticação nem executa operações persistentes. As variáveis do Supabase permanecem disponíveis para os próximos módulos.
 
 ### Login com Google
+
+Referência para reconstrução futura: as telas de login e cadastro foram removidas.
 
 No painel do Supabase, habilite o provedor Google em **Authentication > Providers** e informe o Client ID e o Client Secret criados no Google Cloud. Essas credenciais ficam somente no Supabase e nunca devem ser adicionadas às variáveis `VITE_`.
 
@@ -195,7 +197,7 @@ A migration inicial cria perfis, projetos, planos, assinaturas, limites de uso, 
 
 ## Versão atual
 
-`v0.2.0` — Cadastro e acesso com conta Google via Supabase Auth.
+`v0.2.0` — Última release. Após essa versão, as páginas e layouts foram removidos para reconstrução; a infraestrutura permanece preservada.
 
 As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 

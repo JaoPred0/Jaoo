@@ -129,11 +129,6 @@
   }
   body {
     @apply bg-background text-foreground m-0 min-h-screen min-w-80 overflow-x-hidden antialiased;
-    background-image: radial-gradient(
-      circle at 12% -10%,
-      color-mix(in oklch, var(--primary) 9%, transparent),
-      transparent 32rem
-    );
   }
   button,
   input {

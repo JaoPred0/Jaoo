@@ -2,6 +2,18 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## Não lançado
+
+### Removido
+
+- Páginas institucionais, autenticação, dashboard, projetos, conta, configurações, planos, administração e Jaoo Link.
+- Navbar, navegação inferior, layouts e tela de erro anteriores.
+- Fundo decorativo; aplicação mantida vazia para reconstrução.
+
+### Preservado
+
+- Estrutura do projeto, componentes básicos, configurações, dependências e integração Supabase, incluindo migrations.
+
 ## [0.2.0] - 2026-09-05
 
 ### Adicionado
