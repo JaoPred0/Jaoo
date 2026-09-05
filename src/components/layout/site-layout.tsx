@@ -29,20 +29,13 @@ export function SiteLayout() {
     <div className="site-frame">
       <header className="site-header glass-panel">
         <div className="mx-auto flex w-full max-w-6xl items-center gap-3 px-4 py-3 sm:gap-5 sm:px-6">
-          <details className="relative">
-            <summary
-              className="glass-icon cursor-pointer list-none [&::-webkit-details-marker]:hidden"
-              aria-label="Perfil"
-            >
-              <UserRound size={22} aria-hidden="true" />
-            </summary>
-            <div className="glass-panel absolute top-14 left-0 w-60 rounded-2xl p-5">
-              <p className="font-medium">Seu perfil</p>
-              <p className="text-muted-foreground mt-2 text-sm">
-                Você ainda não está conectado.
-              </p>
-            </div>
-          </details>
+          <NavLink
+            to="/perfil"
+            className="glass-icon shrink-0"
+            aria-label="Perfil"
+          >
+            <UserRound size={22} aria-hidden="true" />
+          </NavLink>
 
           <div
             role="search"

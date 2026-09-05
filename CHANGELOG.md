@@ -6,6 +6,9 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 
 ### Adicionado
 
+- Página de perfil com acesso pela navbar, estado visitante, login Google, edição de nome e usuário e saída da conta.
+- Perfil independente da navegação principal, com boas-vindas e ações separadas para entrar e cadastrar.
+
 - Seção Explore a Jaoo com destaques de aplicativos e dicas expansíveis para novos projetos.
 
 - Grade responsiva de seis atalhos de aplicativos abaixo dos anúncios, com três colunas no celular.

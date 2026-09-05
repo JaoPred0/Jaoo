@@ -23,6 +23,23 @@ test('navegação e pesquisa funcionam com conteúdo vazio', async ({ page }) =>
   expect(errors).toEqual([])
 })
 
+test('abre o perfil pelo ícone da navbar', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('link', { name: 'Perfil', exact: true }).click()
+  await expect(page).toHaveURL('/perfil')
+  await expect(
+    page.getByRole('heading', { name: 'Bem-vindo à Jaoo.' }),
+  ).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Entrar' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Cadastrar' })).toBeVisible()
+  await expect(page.locator('header')).toHaveCount(0)
+  await expect(
+    page.getByRole('navigation', { name: 'Navegação inferior' }),
+  ).toHaveCount(0)
+  await page.getByRole('link', { name: 'Voltar ao início' }).click()
+  await expect(page).toHaveURL('/')
+})
+
 test('registra acessos reais aos aplicativos e preserva o histórico', async ({
   page,
 }) => {
