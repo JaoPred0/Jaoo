@@ -8,7 +8,7 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 🚧 Em desenvolvimento
 
-Versão atual: `v0.1.2`
+Versão atual: `v0.1.3`
 
 Esta versão estabelece a fundação técnica e visual do produto. As interfaces iniciais representam a estrutura dos módulos; os fluxos completos de edição e publicação serão implementados gradualmente.
 
@@ -189,7 +189,7 @@ A migration inicial cria perfis, projetos, planos, assinaturas, limites de uso, 
 
 ## Versão atual
 
-`v0.1.2` — Design system oficial claro e navegação pública.
+`v0.1.3` — Páginas públicas e navegação inferior móvel.
 
 As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 

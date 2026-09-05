@@ -2,11 +2,13 @@
 import { lazy, Suspense, type ReactNode } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { AppShell } from '@/components/layout/app-shell'
+import { PublicLayout } from '@/components/layout/public-layout'
 import ErrorPage from '@/components/shared/error-page'
 import { AdminRoute } from '@/features/auth/admin-route'
 import { AuthProvider } from '@/features/auth/auth-provider'
 import { ProtectedRoute } from '@/features/auth/protected-route'
 const Landing = lazy(() => import('@/features/marketing/landing-page'))
+const Apps = lazy(() => import('@/features/marketing/apps-page'))
 const Auth = lazy(() => import('@/features/auth/auth-page'))
 const Dashboard = lazy(() => import('@/features/dashboard/dashboard-page'))
 const Projects = lazy(() => import('@/features/projects/projects-page'))
@@ -22,11 +24,19 @@ const loading = (
   </div>
 )
 const page = (node: ReactNode) => <Suspense fallback={loading}>{node}</Suspense>
-function Root() {
-  return <AuthProvider>{page(<Landing />)}</AuthProvider>
-}
 export const router = createBrowserRouter([
-  { path: '/', element: <Root />, errorElement: <ErrorPage /> },
+  {
+    element: (
+      <AuthProvider>
+        <PublicLayout />
+      </AuthProvider>
+    ),
+    errorElement: <ErrorPage />,
+    children: [
+      { path: '/', element: page(<Landing />) },
+      { path: '/aplicativos', element: page(<Apps />) },
+    ],
+  },
   {
     path: '/login',
     element: <AuthProvider>{page(<Auth mode="login" />)}</AuthProvider>,

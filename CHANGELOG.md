@@ -2,6 +2,18 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## [0.1.3] - 2026-09-05
+
+### Adicionado
+
+- Página independente de aplicativos em `/aplicativos`.
+- Navegação inferior fixa para “Início” e “Aplicativos” no celular.
+
+### Alterado
+
+- Navegação pública de desktop atualizada para trabalhar com páginas em vez de âncoras.
+- Layout público compartilhado entre as páginas institucionais.
+
 ## [0.1.2] - 2026-09-04
 
 ### Alterado
@@ -44,6 +56,7 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.1.3]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.3
 [0.1.2]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.2
 [0.1.1]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.1
 [0.1.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.0
