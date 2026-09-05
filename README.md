@@ -8,7 +8,7 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 🚧 Em desenvolvimento
 
-Versão atual: `v0.1.5`
+Versão atual: `v0.2.0`
 
 Esta versão estabelece a fundação técnica e visual do produto. As interfaces iniciais representam a estrutura dos módulos; os fluxos completos de edição e publicação serão implementados gradualmente.
 
@@ -19,7 +19,7 @@ A Jaoo foi projetada para começar pequena e crescer de forma segura. A aplicaç
 ## Funcionalidades atuais
 
 - Site institucional responsivo.
-- Cadastro, login e recuperação de senha com Supabase Auth.
+- Cadastro, login e recuperação de senha com Supabase Auth, incluindo acesso com Google.
 - Rotas privadas e sessão persistente.
 - Dashboard e catálogo inicial de projetos.
 - Estrutura inicial do Jaoo Link.
@@ -149,6 +149,12 @@ Use exclusivamente a chave anônima pública no frontend. A chave `SUPABASE_SERV
 
 Sem as variáveis do Supabase, as áreas privadas são liberadas somente como demonstração visual local; operações persistentes não são simuladas.
 
+### Login com Google
+
+No painel do Supabase, habilite o provedor Google em **Authentication > Providers** e informe o Client ID e o Client Secret criados no Google Cloud. Essas credenciais ficam somente no Supabase e nunca devem ser adicionadas às variáveis `VITE_`.
+
+No Google Cloud, cadastre como URI de redirecionamento autorizada a callback exibida pelo Supabase (`https://<project-ref>.supabase.co/auth/v1/callback`). Na lista de URLs de redirecionamento do Supabase Auth, permita `http://localhost:5173/dashboard` para desenvolvimento e a URL equivalente do domínio de produção.
+
 ## Executando localmente
 
 ```bash
@@ -189,7 +195,7 @@ A migration inicial cria perfis, projetos, planos, assinaturas, limites de uso, 
 
 ## Versão atual
 
-`v0.1.5` — Correção de estabilidade da navegação móvel na página inicial.
+`v0.2.0` — Cadastro e acesso com conta Google via Supabase Auth.
 
 As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 

@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowLeft, LoaderCircle } from '@/components/ui/icons'
+import { ArrowLeft, Google, LoaderCircle } from '@/components/ui/icons'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -20,6 +20,7 @@ export default function AuthPage({
   const location = useLocation()
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const schema = z.object({
     email: loginSchema.shape.email,
     password:
@@ -70,6 +71,24 @@ export default function AuthPage({
         safeRedirectPath(new URLSearchParams(location.search).get('next')),
       )
   }
+  async function continueWithGoogle() {
+    setError('')
+    setMessage('')
+    setIsGoogleLoading(true)
+    const next = safeRedirectPath(
+      new URLSearchParams(location.search).get('next'),
+    )
+    const { error: oauthError } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: new URL(next, window.location.origin).toString(),
+      },
+    })
+    if (oauthError) {
+      setError('Não foi possível continuar com o Google. Tente novamente.')
+      setIsGoogleLoading(false)
+    }
+  }
   const title =
     mode === 'login'
       ? 'Que bom ter você de volta.'
@@ -100,9 +119,34 @@ export default function AuthPage({
                 ? 'Crie sua conta gratuita. Você poderá evoluir quando quiser.'
                 : 'Acesse seus projetos e continue de onde parou.'}
           </p>
+          {mode !== 'forgot' && (
+            <div className="mt-8">
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                disabled={isGoogleLoading || form.formState.isSubmitting}
+                onClick={continueWithGoogle}
+              >
+                {isGoogleLoading ? (
+                  <LoaderCircle className="animate-spin" />
+                ) : (
+                  <Google />
+                )}
+                Continuar com Google
+              </Button>
+              <div className="my-6 flex items-center gap-3" aria-hidden="true">
+                <span className="bg-border h-px flex-1" />
+                <span className="text-muted-foreground text-xs uppercase">
+                  ou continue com e-mail
+                </span>
+                <span className="bg-border h-px flex-1" />
+              </div>
+            </div>
+          )}
           <form
             onSubmit={form.handleSubmit(submit)}
-            className="mt-8 space-y-5"
+            className={mode === 'forgot' ? 'mt-8 space-y-5' : 'space-y-5'}
             noValidate
           >
             {mode === 'register' && (

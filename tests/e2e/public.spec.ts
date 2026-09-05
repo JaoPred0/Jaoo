@@ -6,6 +6,13 @@ test('landing e autenticação são navegáveis', async ({ page }) => {
   ).toBeVisible()
   await page.getByRole('link', { name: 'Entrar' }).first().click()
   await expect(page.getByRole('heading', { name: /volta/ })).toBeVisible()
+  await expect(
+    page.getByRole('button', { name: 'Continuar com Google' }),
+  ).toBeVisible()
+  await page.getByRole('link', { name: 'Criar conta' }).click()
+  await expect(
+    page.getByRole('button', { name: 'Continuar com Google' }),
+  ).toBeVisible()
 })
 test('dashboard permanece protegido quando Supabase está configurado', async ({
   page,

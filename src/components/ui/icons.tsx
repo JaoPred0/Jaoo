@@ -12,6 +12,7 @@ import {
   FloppyDiskIcon,
   Folder01Icon,
   GridViewIcon,
+  GoogleIcon,
   Home01Icon,
   Link01Icon,
   Loading03Icon,
@@ -36,6 +37,7 @@ const makeIcon = (icon: IconSvgElement) =>
   }
 
 export const Home = makeIcon(Home01Icon)
+export const Google = makeIcon(GoogleIcon)
 export const FolderKanban = makeIcon(Folder01Icon)
 export const Link2 = makeIcon(Link01Icon)
 export const CreditCard = makeIcon(CreditCardIcon)

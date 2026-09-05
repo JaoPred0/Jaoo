@@ -2,6 +2,18 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## [0.2.0] - 2026-09-05
+
+### Adicionado
+
+- Cadastro e acesso com conta Google nas telas de autenticação.
+- Redirecionamento seguro para o dashboard após o OAuth.
+- Sincronização de nome e foto do Google com o perfil da Jaoo.
+
+### Documentado
+
+- Configuração do provedor Google e das URLs de redirecionamento no Supabase.
+
 ## [0.1.5] - 2026-09-05
 
 ### Corrigido
@@ -71,6 +83,7 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.2.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.2.0
 [0.1.5]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.5
 [0.1.4]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.4
 [0.1.3]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.3
