@@ -2,6 +2,22 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## [0.4.0] - 2026-09-05
+
+### Adicionado
+
+- Dashboard próprio do Jaoo Link com onboarding, métricas, ações rápidas e upgrade discreto.
+- Rotas dedicadas para editor, design, analytics, configurações e plano Pro.
+- Sistema de blocos com título, texto, separador, WhatsApp, e-mail, telefone, Pix e localização.
+- Controles acessíveis para reordenar, duplicar, ocultar e excluir blocos e links.
+- Página pública gratuita em `/@username`, publicação, compartilhamento e QR Code.
+- Autosave, temas, paleta personalizada, SEO básico e demonstração de URL personalizada.
+
+### Segurança
+
+- Migration para persistência de blocos, usernames, moderação, URLs personalizadas e analytics com RLS.
+- Validação de usernames reservados, URLs seguras e limites de conteúdo.
+
 ## [0.3.0] - 2026-09-05
 
 ### Adicionado
@@ -122,6 +138,7 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.4.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.4.0
 [0.3.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.3.0
 [0.2.0]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.2.0
 [0.1.5]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.5

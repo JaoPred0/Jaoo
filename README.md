@@ -8,13 +8,28 @@ O objetivo é reunir ferramentas simples e poderosas em um único ecossistema, p
 
 🚧 Em desenvolvimento
 
-Versão atual: `v0.3.0`
+Versão atual: `v0.4.0`
 
 As páginas anteriores foram removidas para reconstrução. A interface atual possui navbar fixa com perfil, pesquisa de páginas e notificações, além de navegação inferior mobile com Início e Aplicativos. As barras usam efeito de vidro no tema escuro e respeitam a área segura do celular. O conteúdo das páginas permanece vazio. A lista de módulos abaixo descreve a fundação anterior; suas telas não estão mais disponíveis.
 
 ## Sobre o projeto
 
-O Jaoo Link está disponível em `/link`, acessível pelo atalho da home. O editor permite configurar nome, endereço público, bio, cor e até 12 links, com visibilidade individual e prévia responsiva em tempo real. Nesta primeira versão, os dados são salvos somente no navegador do dispositivo.
+O Jaoo Link v0.1.0 está disponível em `/apps/link`, acessível pelo atalho da home. Ele possui dashboard próprio, onboarding, editor, design, analytics, configurações, upgrade e página pública. Nesta primeira versão, os dados são salvos somente no navegador do dispositivo; os números do analytics demonstram a interface até a coleta real ser conectada ao backend.
+
+### Rotas do Jaoo Link
+
+- `/apps/link` — dashboard e primeiro acesso.
+- `/apps/link/create` — criação inicial.
+- `/apps/link/editor` — conteúdo, links, blocos e prévia.
+- `/apps/link/design` — temas e paleta.
+- `/apps/link/analytics` — métricas básicas.
+- `/apps/link/settings` — publicação, username, privacidade e SEO.
+- `/apps/link/upgrade` — demonstração de URL personalizada.
+- `/@username` — página pública gratuita.
+
+O editor oferece links e blocos de título, texto, separador, WhatsApp, e-mail, telefone, Pix e localização. Todos podem ser ocultados, duplicados, excluídos e reordenados com controles acessíveis. Há autosave, publicação, compartilhamento e QR Code real. Os tipos futuros de conteúdo e integrações estão planejados sem bloquear uma boa página gratuita.
+
+A migration `202609050001_jaoo_link_v01.sql` prepara persistência de blocos, usernames, URLs personalizadas, moderação de conteúdo e analytics diário com RLS. O frontend usa armazenamento local enquanto essa migration não for aplicada e o serviço de persistência não estiver conectado. Rate limiting e proteção contra abuso permanecem preparados nas Edge Functions compartilhadas.
 
 A página `/perfil` pode ser acessada pelo ícone da navbar. Ela abre sem navbar e sem navegação inferior, apresenta uma boas-vindas e, para visitantes, botões de entrada e cadastro via Google. Para contas conectadas, permite editar nome e usuário no Supabase. Para o OAuth, permita também a URL `/perfil` do domínio local e de produção nas Redirect URLs do Supabase. A gravação depende do schema e das políticas de perfis já aplicados no banco.
 
@@ -211,7 +226,7 @@ A migration inicial cria perfis, projetos, planos, assinaturas, limites de uso, 
 
 ## Versão atual
 
-`v0.3.0` — Novo início da interface e primeira versão funcional do Jaoo Link.
+`v0.4.0` — Jaoo Link v0.1.0 com dashboard próprio, editor por blocos e página pública.
 
 As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 
@@ -223,7 +238,7 @@ As mudanças de cada versão são registradas no [`CHANGELOG.md`](CHANGELOG.md).
 - [x] Fundação do Jaoo Link.
 - [x] PWA e estrutura Tauri.
 - [ ] Persistência completa dos fluxos de projetos.
-- [ ] Editor e publicação do Jaoo Link.
+- [x] Editor, publicação e dashboard próprio do Jaoo Link v0.1.0.
 - [ ] Analytics.
 - [ ] Pagamentos e recursos premium.
 - [ ] Distribuição desktop e mobile.

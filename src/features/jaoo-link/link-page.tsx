@@ -1,7 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import {
   ArrowUpRight,
+  ArrowDown,
+  ArrowUp,
+  Copy,
   Eye,
   Link2,
   Plus,
@@ -11,98 +14,40 @@ import {
 } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-
-type LinkItem = {
-  id: string
-  title: string
-  url: string
-  active: boolean
-}
-
-type LinkPageData = {
-  name: string
-  bio: string
-  username: string
-  accent: string
-  links: LinkItem[]
-}
-
-const storageKey = 'jaoo:link-page:v1'
-const initialData: LinkPageData = {
-  name: 'Seu nome',
-  bio: 'Conte um pouco sobre você e compartilhe o que importa.',
-  username: 'seunome',
-  accent: '#8b5cf6',
-  links: [
-    {
-      id: 'welcome',
-      title: 'Meu primeiro link',
-      url: 'https://example.com',
-      active: true,
-    },
-  ],
-}
-
-function readPage(): LinkPageData {
-  try {
-    const value = JSON.parse(
-      localStorage.getItem(storageKey) ?? '',
-    ) as Partial<LinkPageData>
-    if (!value || typeof value !== 'object' || !Array.isArray(value.links))
-      return initialData
-    return {
-      name:
-        typeof value.name === 'string'
-          ? value.name.slice(0, 80)
-          : initialData.name,
-      bio:
-        typeof value.bio === 'string'
-          ? value.bio.slice(0, 160)
-          : initialData.bio,
-      username:
-        typeof value.username === 'string'
-          ? value.username.slice(0, 30)
-          : initialData.username,
-      accent:
-        typeof value.accent === 'string' && /^#[0-9a-f]{6}$/i.test(value.accent)
-          ? value.accent
-          : initialData.accent,
-      links: value.links
-        .slice(0, 12)
-        .filter((item): item is LinkItem =>
-          Boolean(
-            item &&
-            typeof item.id === 'string' &&
-            typeof item.title === 'string' &&
-            typeof item.url === 'string' &&
-            typeof item.active === 'boolean',
-          ),
-        ),
-    }
-  } catch {
-    return initialData
-  }
-}
-
-function safeUrl(value: string) {
-  const candidate = /^https?:\/\//i.test(value) ? value : `https://${value}`
-  try {
-    const url = new URL(candidate)
-    return ['http:', 'https:'].includes(url.protocol) ? url.toString() : null
-  } catch {
-    return null
-  }
-}
+import { linkDataKey, normalizeUsername } from './link-storage'
+import { BlocksEditor } from './blocks-editor'
+import { readPage, safeUrl, type LinkItem } from './link-model'
 
 export function JaooLinkPage() {
   const [page, setPage] = useState(readPage)
   const [saved, setSaved] = useState(false)
+  const [saveState, setSaveState] = useState<'saved' | 'saving' | 'error'>(
+    'saved',
+  )
+  const firstRender = useRef(true)
   const [error, setError] = useState('')
   const publicPath = `/@${page.username || 'seunome'}`
   const activeLinks = useMemo(
     () => page.links.filter((link) => link.active),
     [page.links],
   )
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
+    setSaveState('saving')
+    const timeout = window.setTimeout(() => {
+      try {
+        localStorage.setItem(linkDataKey, JSON.stringify(page))
+        setSaveState('saved')
+      } catch {
+        setSaveState('error')
+      }
+    }, 500)
+    return () => window.clearTimeout(timeout)
+  }, [page])
 
   function updateLink(id: string, changes: Partial<LinkItem>) {
     setSaved(false)
@@ -130,9 +75,18 @@ export function JaooLinkPage() {
     setSaved(false)
   }
 
+  function moveLink(index: number, direction: -1 | 1) {
+    const target = index + direction
+    if (target < 0 || target >= page.links.length) return
+    const links = [...page.links]
+    ;[links[index], links[target]] = [links[target], links[index]]
+    setPage({ ...page, links })
+    setSaved(false)
+  }
+
   function save() {
     setError('')
-    const username = page.username.trim().toLowerCase()
+    const username = normalizeUsername(page.username)
     if (!/^[a-z0-9_]{3,30}$/.test(username)) {
       setError('O endereço deve ter de 3 a 30 letras minúsculas, números ou _.')
       return
@@ -156,7 +110,7 @@ export function JaooLinkPage() {
       })),
     }
     try {
-      localStorage.setItem(storageKey, JSON.stringify(clean))
+      localStorage.setItem(linkDataKey, JSON.stringify(clean))
       setPage(clean)
       setSaved(true)
     } catch {
@@ -182,9 +136,18 @@ export function JaooLinkPage() {
             Monte sua página de links e acompanhe a prévia em tempo real.
           </p>
         </div>
-        <Button onClick={save} className="min-h-11">
-          <Save /> Salvar
-        </Button>
+        <div className="flex items-center gap-3">
+          <span role="status" className="text-xs text-neutral-500">
+            {saveState === 'saving'
+              ? 'Salvando…'
+              : saveState === 'error'
+                ? 'Erro ao salvar'
+                : 'Salvo'}
+          </span>
+          <Button onClick={save} className="min-h-11">
+            <Save /> Salvar
+          </Button>
+        </div>
       </motion.header>
 
       {error && (
@@ -274,6 +237,8 @@ export function JaooLinkPage() {
             </div>
           </section>
 
+          <BlocksEditor />
+
           <section aria-labelledby="links-heading">
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
@@ -302,6 +267,42 @@ export function JaooLinkPage() {
                       Link {index + 1}
                     </span>
                     <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        aria-label="Mover link para cima"
+                        disabled={index === 0}
+                        onClick={() => moveLink(index, -1)}
+                        className="glass-icon !size-9 disabled:opacity-30"
+                      >
+                        <ArrowUp size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Mover link para baixo"
+                        disabled={index === page.links.length - 1}
+                        onClick={() => moveLink(index, 1)}
+                        className="glass-icon !size-9 disabled:opacity-30"
+                      >
+                        <ArrowDown size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Duplicar link"
+                        onClick={() => {
+                          setPage({
+                            ...page,
+                            links: [
+                              ...page.links.slice(0, index + 1),
+                              { ...link, id: crypto.randomUUID() },
+                              ...page.links.slice(index + 1),
+                            ],
+                          })
+                          setSaved(false)
+                        }}
+                        className="glass-icon !size-9"
+                      >
+                        <Copy size={16} />
+                      </button>
                       <label className="flex cursor-pointer items-center gap-2 text-xs text-neutral-400">
                         <input
                           type="checkbox"

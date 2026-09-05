@@ -59,7 +59,7 @@ test('registra acessos reais aos aplicativos e preserva o histórico', async ({
   await page.goto('/')
   await expect(page.getByText('Nenhuma atividade por enquanto')).toBeVisible()
   await page.getByRole('button', { name: 'Jaoo Link', exact: true }).click()
-  await expect(page).toHaveURL('/link')
+  await expect(page).toHaveURL('/apps/link')
   await page.goto('/')
   await expect(page.getByText('Consultou o aplicativo')).toBeVisible()
   await page.reload()
@@ -67,7 +67,10 @@ test('registra acessos reais aos aplicativos e preserva o histórico', async ({
 })
 
 test('edita e salva uma página no Jaoo Link', async ({ page }) => {
-  await page.goto('/link')
+  await page.addInitScript(() =>
+    localStorage.setItem('jaoo:link-onboarding:v1', 'done'),
+  )
+  await page.goto('/apps/link/editor')
   await expect(page.getByRole('heading', { name: 'Jaoo Link' })).toBeVisible()
   await page.getByLabel('Nome').fill('João')
   await page.getByLabel('Título do link 1').fill('Meu site')
@@ -81,6 +84,53 @@ test('edita e salva uma página no Jaoo Link', async ({ page }) => {
   await expect(page.getByLabel('URL do link 1')).toHaveValue(
     'https://jaoo.com.br/',
   )
+})
+
+test('conclui onboarding e navega no dashboard próprio', async ({ page }) => {
+  await page.goto('/apps/link')
+  await expect(
+    page.getByRole('heading', { name: 'Crie seu espaço na internet.' }),
+  ).toBeVisible()
+  await page.getByRole('button', { name: 'Criar meu Jaoo Link' }).click()
+  await page.getByLabel('Username').fill('admin')
+  await expect(page.getByText(/nome está reservado/)).toBeVisible()
+  await page.getByLabel('Username').fill('joao_teste')
+  await expect(page.getByText('✓ Disponível')).toBeVisible()
+  await page.getByRole('button', { name: 'Continuar para o editor' }).click()
+  await expect(page).toHaveURL('/apps/link/editor')
+  await page.getByRole('link', { name: /^(Visão geral|Início)$/ }).click()
+  await expect(
+    page.getByRole('heading', { name: 'Seu Jaoo Link' }),
+  ).toBeVisible()
+})
+
+test('publica e abre a página pública', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('jaoo:link-onboarding:v1', 'done')
+    localStorage.setItem(
+      'jaoo:link-page:v1',
+      JSON.stringify({
+        name: 'João',
+        bio: 'Minha página',
+        username: 'joao',
+        accent: '#8b5cf6',
+        links: [
+          {
+            id: 'site',
+            title: 'Meu site',
+            url: 'https://example.com',
+            active: true,
+          },
+        ],
+      }),
+    )
+  })
+  await page.goto('/apps/link/settings')
+  await page.getByLabel('Publicar página').click()
+  await expect(page.getByText('Seu Jaoo Link está no ar!')).toBeVisible()
+  await page.goto('/@joao')
+  await expect(page.getByRole('heading', { name: 'João' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Meu site' })).toBeVisible()
 })
 
 test('alterna os dois anúncios sem ultrapassar a tela', async ({ page }) => {

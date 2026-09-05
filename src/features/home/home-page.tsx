@@ -98,7 +98,7 @@ export function HomePage() {
       /* O histórico continua disponível nesta sessão. */
     }
     if (app.id === 'link') {
-      navigate('/link')
+      navigate('/apps/link')
       return
     }
     setSelected(app)
