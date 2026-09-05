@@ -14,6 +14,8 @@ As páginas anteriores foram removidas para reconstrução. A interface atual po
 
 ## Sobre o projeto
 
+As seções e cards usam Motion para entradas suaves e resposta a toque e hover, respeitando a preferência de movimento reduzido do dispositivo.
+
 A home também apresenta a seção “Explore a Jaoo”, com destaques dos aplicativos, e dicas expansíveis para preparar novos projetos.
 
 Abaixo dos anúncios, o início oferece seis atalhos de aplicativos e atividade recente. Os apps exibem uma apresentação com status “Em breve”; os editores ainda não estão disponíveis. O histórico registra somente consultas reais aos aplicativos, limitado aos seis últimos acessos, salvo neste navegador (sem sincronização de conta).

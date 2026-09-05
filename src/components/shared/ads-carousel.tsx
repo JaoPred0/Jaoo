@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { motion } from 'motion/react'
 import { Boxes, Sparkles } from '@/components/ui/icons'
 
 // Substitua estes dois exemplos pelas campanhas oficiais.
@@ -35,7 +36,9 @@ export function AdsCarousel() {
   }
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       aria-label="Anúncios"
       aria-roledescription="carrossel"
       className="mx-auto w-full max-w-6xl px-4 pt-2 sm:px-6 sm:pt-4"
@@ -109,6 +112,6 @@ export function AdsCarousel() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

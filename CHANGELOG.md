@@ -18,6 +18,8 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 
 ### Alterado
 
+- Animações Motion na entrada das seções, cards e histórico, respeitando movimento reduzido.
+
 - Tema escuro definido como padrão desde o HTML inicial, com cores escuras também no navegador e na abertura do PWA.
 
 ### Removido

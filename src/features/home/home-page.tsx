@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { motion } from 'motion/react'
+import { AnimatedSection } from '@/components/shared/animated-section'
 import { AdsCarousel } from '@/components/shared/ads-carousel'
 import {
   BarChart3,
@@ -101,7 +103,10 @@ export function HomePage() {
     <>
       <AdsCarousel />
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-        <section aria-labelledby="apps-heading" className="mt-8 sm:mt-10">
+        <AnimatedSection
+          aria-labelledby="apps-heading"
+          className="mt-8 sm:mt-10"
+        >
           <h2
             id="apps-heading"
             className="mb-5 text-base font-medium tracking-tight"
@@ -110,7 +115,9 @@ export function HomePage() {
           </h2>
           <div className="grid grid-cols-3 gap-x-4 gap-y-6 sm:gap-6 lg:grid-cols-6">
             {apps.map((app) => (
-              <button
+              <motion.button
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.97 }}
                 key={app.id}
                 type="button"
                 onClick={() => openApp(app)}
@@ -124,12 +131,12 @@ export function HomePage() {
                 <span className="text-xs font-medium text-neutral-300 sm:text-sm">
                   {app.name}
                 </span>
-              </button>
+              </motion.button>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
 
-        <section
+        <AnimatedSection
           aria-labelledby="history-heading"
           className="mt-10 pb-5 sm:mt-12"
         >
@@ -147,8 +154,15 @@ export function HomePage() {
               {history.map((item) => {
                 const app = apps.find((entry) => entry.id === item.appId)!
                 return (
-                  <li key={item.appId}>
-                    <button
+                  <motion.li
+                    key={item.appId}
+                    layout="position"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <motion.button
+                      whileHover={{ y: -3 }}
+                      whileTap={{ scale: 0.97 }}
                       type="button"
                       onClick={() => openApp(app)}
                       className="flex w-full items-center gap-3 p-4 text-left hover:bg-white/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-violet-400"
@@ -177,8 +191,8 @@ export function HomePage() {
                           minute: '2-digit',
                         }).format(new Date(item.at))}
                       </time>
-                    </button>
-                  </li>
+                    </motion.button>
+                  </motion.li>
                 )
               })}
             </ul>
@@ -197,8 +211,11 @@ export function HomePage() {
               </p>
             </div>
           )}
-        </section>
-        <section aria-labelledby="explore-heading" className="mt-6 sm:mt-8">
+        </AnimatedSection>
+        <AnimatedSection
+          aria-labelledby="explore-heading"
+          className="mt-6 sm:mt-8"
+        >
           <span className="text-[10px] font-medium tracking-[0.2em] text-violet-300 uppercase">
             Ideias para o próximo passo
           </span>
@@ -226,7 +243,9 @@ export function HomePage() {
                 tag: 'Seu lado criativo',
               },
             ].map(({ app, title, text, tag }) => (
-              <button
+              <motion.button
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.97 }}
                 key={app.id}
                 type="button"
                 onClick={() => openApp(app)}
@@ -252,12 +271,12 @@ export function HomePage() {
                 <span className={`mt-6 block text-xs font-medium ${app.color}`}>
                   Conhecer {app.name} →
                 </span>
-              </button>
+              </motion.button>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
 
-        <section aria-labelledby="tips-heading" className="mt-10">
+        <AnimatedSection aria-labelledby="tips-heading" className="mt-10">
           <h2 id="tips-heading" className="text-base font-medium">
             Pequenos passos, boas ideias
           </h2>
@@ -298,7 +317,7 @@ export function HomePage() {
               </details>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
         <p className="pt-10 pb-4 text-center text-[10px] tracking-[0.2em] text-neutral-600 uppercase">
           Jaoo · Um espaço. Infinitas ideias.
         </p>
@@ -313,14 +332,16 @@ export function HomePage() {
           <h2 id="app-title" className="text-lg font-semibold">
             {selected?.name}
           </h2>
-          <button
+          <motion.button
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
             type="button"
             aria-label="Fechar"
             onClick={() => dialog.current?.close()}
             className="glass-icon shrink-0"
           >
             <X size={18} />
-          </button>
+          </motion.button>
         </div>
         <p className="mt-4 text-sm leading-relaxed text-neutral-400">
           {selected?.description}
