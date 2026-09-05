@@ -11,8 +11,8 @@ const navigation = [
 
 export function PublicLayout() {
   return (
-    <div className="min-h-screen pt-16 pb-20 sm:pt-20 sm:pb-0">
-      <header className="border-border bg-background/95 fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md">
+    <div className="min-h-dvh overflow-x-clip pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] sm:pt-20 sm:pb-0">
+      <header className="border-border bg-background/95 fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md will-change-transform">
         <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto] items-center px-5 sm:h-20 sm:grid-cols-[1fr_auto_1fr] lg:px-8">
           <Logo />
           <nav
@@ -56,7 +56,7 @@ export function PublicLayout() {
       </main>
 
       <nav
-        className="border-border bg-background/95 fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t px-3 pt-2 pb-[calc(.5rem+env(safe-area-inset-bottom))] backdrop-blur-md sm:hidden"
+        className="border-border bg-background/95 fixed inset-x-0 bottom-0 z-40 grid h-[calc(4rem+env(safe-area-inset-bottom))] grid-cols-2 items-start border-t px-3 pt-1 pb-[env(safe-area-inset-bottom)] backdrop-blur-md will-change-transform sm:hidden"
         aria-label="Navegação principal móvel"
       >
         {navigation.map(({ to, label, icon: Icon, end }) => (
@@ -66,7 +66,7 @@ export function PublicLayout() {
             end={end}
             className={({ isActive }) =>
               cn(
-                'flex min-h-12 flex-col items-center justify-center gap-1 rounded-md text-xs font-medium transition-colors',
+                'flex h-14 flex-col items-center justify-center gap-1 rounded-md text-xs leading-none font-medium transition-colors',
                 isActive
                   ? 'text-primary'
                   : 'text-muted-foreground hover:text-foreground',

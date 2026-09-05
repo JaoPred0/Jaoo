@@ -24,3 +24,27 @@ test('navega entre início e aplicativos como páginas', async ({ page }) => {
   await page.getByRole('link', { name: 'Início' }).last().click()
   await expect(page).toHaveURL('/')
 })
+
+test('mantém as navegações fixas durante a rolagem mobile', async ({
+  page,
+}) => {
+  test.skip((page.viewportSize()?.width ?? 1280) >= 640)
+  await page.goto('/')
+  const header = page.locator('header')
+  const footer = page.getByRole('navigation', {
+    name: 'Navegação principal móvel',
+  })
+  const before = await footer.evaluate((element) => ({
+    bottom: element.getBoundingClientRect().bottom,
+    viewport: window.innerHeight,
+  }))
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+  await expect(header).toBeInViewport()
+  await expect(footer).toBeInViewport()
+  const after = await footer.evaluate((element) => ({
+    bottom: element.getBoundingClientRect().bottom,
+    viewport: window.innerHeight,
+  }))
+  expect(Math.abs(before.bottom - before.viewport)).toBeLessThanOrEqual(1)
+  expect(Math.abs(after.bottom - after.viewport)).toBeLessThanOrEqual(1)
+})

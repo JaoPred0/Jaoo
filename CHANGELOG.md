@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto segue versionamento semântico.
 
+## [0.1.5] - 2026-09-05
+
+### Corrigido
+
+- Recorte dos textos da navegação inferior na página inicial mobile.
+- Posicionamento das barras fixas durante a rolagem e mudanças do viewport móvel.
+- Reserva de espaço inferior considerando a área segura do dispositivo.
+
 ## [0.1.4] - 2026-09-05
 
 ### Corrigido
@@ -63,6 +71,7 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 - Configuração centralizada de rate limiting.
 - CSP, headers de segurança e diretrizes para Cloudflare.
 
+[0.1.5]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.5
 [0.1.4]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.4
 [0.1.3]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.3
 [0.1.2]: https://github.com/JaoPred0/Jaoo/releases/tag/v0.1.2
