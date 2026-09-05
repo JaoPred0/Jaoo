@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { Notification03Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Boxes, Home, Search, UserRound } from '@/components/ui/icons'
+import { useAuthStore } from '@/stores/auth-store'
 
 const destinations = [
   { to: '/', label: 'Início', icon: Home },
@@ -11,6 +12,7 @@ const destinations = [
 
 export function SiteLayout() {
   const [query, setQuery] = useState('')
+  const user = useAuthStore((state) => state.user)
   const matches = destinations.filter((item) =>
     item.label
       .normalize('NFD')
@@ -30,7 +32,7 @@ export function SiteLayout() {
       <header className="site-header glass-panel">
         <div className="mx-auto flex w-full max-w-6xl items-center gap-3 px-4 py-3 sm:gap-5 sm:px-6">
           <NavLink
-            to="/perfil"
+            to={user ? '/perfil' : '/login'}
             className="glass-icon shrink-0"
             aria-label="Perfil"
           >

@@ -16,6 +16,8 @@ As páginas anteriores foram removidas para reconstrução. A interface atual po
 
 A página `/perfil` pode ser acessada pelo ícone da navbar. Ela abre sem navbar e sem navegação inferior, apresenta uma boas-vindas e, para visitantes, botões de entrada e cadastro via Google. Para contas conectadas, permite editar nome e usuário no Supabase. Para o OAuth, permita também a URL `/perfil` do domínio local e de produção nas Redirect URLs do Supabase. A gravação depende do schema e das políticas de perfis já aplicados no banco.
 
+Visitantes que clicam no ícone de perfil são direcionados para `/login`. As páginas independentes `/login` e `/cadastro` oferecem autenticação por e-mail e senha ou Google; usuários autenticados seguem para `/perfil`.
+
 As seções e cards usam Motion para entradas suaves e resposta a toque e hover, respeitando a preferência de movimento reduzido do dispositivo.
 
 A home também apresenta a seção “Explore a Jaoo”, com destaques dos aplicativos, e dicas expansíveis para preparar novos projetos.

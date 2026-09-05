@@ -6,6 +6,9 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 
 ### Adicionado
 
+- Páginas independentes de login e cadastro com e-mail, senha e Google.
+- Redirecionamento do ícone de perfil para login quando não houver sessão e para o perfil quando a conta estiver conectada.
+
 - Página de perfil com acesso pela navbar, estado visitante, login Google, edição de nome e usuário e saída da conta.
 - Perfil independente da navegação principal, com boas-vindas e ações separadas para entrar e cadastrar.
 

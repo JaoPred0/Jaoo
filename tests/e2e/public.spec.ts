@@ -1,9 +1,11 @@
 import { expect, test } from '@playwright/test'
 
-test('navegação e pesquisa funcionam com conteúdo vazio', async ({ page }) => {
+test('navegação e pesquisa funcionam na interface principal', async ({
+  page,
+}) => {
   const errors: string[] = []
   page.on('pageerror', (error) => errors.push(error.message))
-  for (const path of ['/', '/aplicativos', '/login', '/dashboard']) {
+  for (const path of ['/', '/aplicativos']) {
     await page.goto(path)
     await expect(page.locator('#root')).toBeAttached()
     if (path !== '/') await expect(page.locator('main')).toBeEmpty()
@@ -23,15 +25,26 @@ test('navegação e pesquisa funcionam com conteúdo vazio', async ({ page }) =>
   expect(errors).toEqual([])
 })
 
-test('abre o perfil pelo ícone da navbar', async ({ page }) => {
+test('visitante abre o login pelo ícone e acessa o cadastro', async ({
+  page,
+}) => {
   await page.goto('/')
   await page.getByRole('link', { name: 'Perfil', exact: true }).click()
-  await expect(page).toHaveURL('/perfil')
+  await expect(page).toHaveURL('/login')
   await expect(
-    page.getByRole('heading', { name: 'Bem-vindo à Jaoo.' }),
+    page.getByRole('heading', { name: 'Bem-vindo de volta.' }),
   ).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Entrar' })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Cadastrar' })).toBeVisible()
+  await expect(
+    page.getByRole('button', { name: 'Continuar com Google' }),
+  ).toBeVisible()
+  await page.getByRole('link', { name: 'Cadastre-se' }).click()
+  await expect(page).toHaveURL('/cadastro')
+  await expect(
+    page.getByRole('heading', { name: 'Crie seu espaço.' }),
+  ).toBeVisible()
+  await expect(
+    page.getByRole('button', { name: 'Continuar com Google' }),
+  ).toBeVisible()
   await expect(page.locator('header')).toHaveCount(0)
   await expect(
     page.getByRole('navigation', { name: 'Navegação inferior' }),
