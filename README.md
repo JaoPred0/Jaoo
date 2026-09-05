@@ -57,7 +57,7 @@ A Jaoo foi projetada para começar pequena e crescer de forma segura. A aplicaç
 
 - React 19 e TypeScript.
 - Vite e Tailwind CSS.
-- shadcn/ui com o preset oficial Mira, tema Violet/Neutral e radius médio.
+- shadcn/ui com o preset oficial Mira, tema escuro por padrão, cores Violet/Neutral e radius médio.
 - DM Sans e Hugeicons como fonte e biblioteca de ícones oficiais.
 - Motion, React Router, Zustand e TanStack Query.
 - React Hook Form e Zod.

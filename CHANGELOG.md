@@ -4,6 +4,10 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 
 ## Não lançado
 
+### Alterado
+
+- Tema escuro definido como padrão desde o HTML inicial, com cores escuras também no navegador e na abertura do PWA.
+
 ### Removido
 
 - Páginas institucionais, autenticação, dashboard, projetos, conta, configurações, planos, administração e Jaoo Link.

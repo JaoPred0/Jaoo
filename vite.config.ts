@@ -14,8 +14,8 @@ export default defineConfig({
         name: 'Jaoo',
         short_name: 'Jaoo',
         description: 'Seu espaço para criar, publicar e crescer.',
-        theme_color: '#6d28d9',
-        background_color: '#ffffff',
+        theme_color: '#0a0a0a',
+        background_color: '#0a0a0a',
         display: 'standalone',
         start_url: '/',
         icons: [
