@@ -143,6 +143,27 @@
   }
 }
 
+.ads-track {
+  scrollbar-width: none;
+}
+.ads-track::-webkit-scrollbar {
+  display: none;
+}
+.ads-track:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: -3px;
+}
+.ad-slide-violet {
+  background:
+    radial-gradient(ellipse at 95% 15%, rgb(139 92 246 / 28%), transparent 65%),
+    linear-gradient(120deg, #191321, #111014);
+}
+.ad-slide-blue {
+  background:
+    radial-gradient(ellipse at 95% 15%, rgb(56 189 248 / 22%), transparent 65%),
+    linear-gradient(120deg, #111b25, #101216);
+}
+
 .site-frame {
   min-height: 100dvh;
   background: radial-gradient(

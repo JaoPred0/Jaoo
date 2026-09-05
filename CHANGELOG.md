@@ -6,6 +6,8 @@ Todas as mudanças relevantes da Jaoo são registradas neste arquivo. O projeto 
 
 ### Adicionado
 
+- Carrossel responsivo com dois anúncios de exemplo no início, deslize nativo, indicadores e navegação por teclado.
+
 - Navbar fixa com perfil, pesquisa de páginas e notificações.
 - Navegação inferior mobile com Início e Aplicativos, efeito glassmorphism e área segura.
 

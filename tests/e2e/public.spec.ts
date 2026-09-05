@@ -6,7 +6,7 @@ test('navegação e pesquisa funcionam com conteúdo vazio', async ({ page }) =>
   for (const path of ['/', '/aplicativos', '/login', '/dashboard']) {
     await page.goto(path)
     await expect(page.locator('#root')).toBeAttached()
-    await expect(page.locator('main')).toBeEmpty()
+    if (path !== '/') await expect(page.locator('main')).toBeEmpty()
     await expect(page.getByRole('searchbox')).toBeVisible()
   }
   await page.getByRole('searchbox').fill('aplicativos')
@@ -21,6 +21,27 @@ test('navegação e pesquisa funcionam com conteúdo vazio', async ({ page }) =>
     page.getByText('Nenhuma notificação por enquanto.'),
   ).toBeVisible()
   expect(errors).toEqual([])
+})
+
+test('alterna os dois anúncios sem ultrapassar a tela', async ({ page }) => {
+  await page.goto('/')
+  const carousel = page.getByRole('region', { name: 'Anúncios' })
+  await expect(carousel.getByRole('group')).toHaveCount(2)
+  await carousel.getByRole('button', { name: 'Mostrar anúncio 2' }).click()
+  await expect(
+    carousel.getByRole('button', { name: 'Mostrar anúncio 2' }),
+  ).toHaveAttribute('aria-pressed', 'true')
+  const track = carousel.locator('.ads-track')
+  await track.focus()
+  await page.keyboard.press('ArrowLeft')
+  await expect(
+    carousel.getByRole('button', { name: 'Mostrar anúncio 1' }),
+  ).toHaveAttribute('aria-pressed', 'true')
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true)
 })
 
 test('barras permanecem fixas no celular sem ultrapassar a tela', async ({

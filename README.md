@@ -14,6 +14,8 @@ As páginas anteriores foram removidas para reconstrução. A interface atual po
 
 ## Sobre o projeto
 
+A página inicial contém dois anúncios de exemplo em um carrossel responsivo. O conteúdo das campanhas está em `src/components/shared/ads-carousel.tsx`; a navegação funciona por deslize, indicadores ou setas do teclado, sem troca automática.
+
 A Jaoo foi projetada para começar pequena e crescer de forma segura. A aplicação separa autenticação, projetos, conta, administração e produtos em módulos independentes, com validações importantes executadas no banco ou backend.
 
 ## Funcionalidades da versão anterior (interfaces removidas)
